@@ -1,0 +1,39 @@
+.field {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  row-gap: 16px;
+
+  &__control {
+    width: 100%;
+    padding: 20px;
+    font-size: 18px;
+    color: var(--white);
+    background: #1d1d1d;
+    border: none;
+    border-radius: 8px;
+    outline: none;
+
+    @include hover {
+      color: #ffffff85;
+    }
+
+    &:user-invalid {
+      border-color: var(--accent-hover);
+    }
+
+    &:disabled {
+      @include disabled;
+    }
+
+    &::placeholder {
+      color: #ffffff70;
+    }
+  }
+
+  textarea.field__control {
+    min-height: fluid(163, 109);
+    padding-block: fluid-to-laptop(20, 16);
+    resize: vertical;
+  }
+}

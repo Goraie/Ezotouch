@@ -1,0 +1,169 @@
+.first-card {
+  overflow: hidden;
+  padding-top: 160px;
+  padding-bottom: 40px;
+  background: radial-gradient(
+    ellipse 70% 100% at center bottom,
+    #00000080 0%,
+    transparent 100%
+  );
+  border-bottom: 1px solid #ffffff20;
+
+  &__w {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  &__left {
+    @include flex-column;
+    justify-content: end;
+    gap: 64px;
+    height: 100%;
+    @include tablet-above {
+      padding-top: 48px;
+    }
+  }
+
+  &__descr {
+    max-width: 390px;
+    margin-top: 16px;
+  }
+
+  &__bottom {
+    width: 100%;
+  }
+
+  &__heading {
+    margin-bottom: 24px;
+    font-family: var(--font-heading);
+    text-transform: uppercase;
+  }
+
+  &__row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 20px;
+    padding: 16px 0;
+    border-top: 1px solid #ffffff06;
+
+    &:last-of-type {
+      border-bottom: 1px solid #ffffff06;
+    }
+  }
+
+  &__name {
+    opacity: 0.6;
+  }
+
+  &__right {
+    @include flex-center;
+
+    position: relative;
+    padding: 40px;
+    background: #171717;
+
+    svg {
+      position: absolute;
+      width: 24px;
+      height: 35px;
+      color: var(--white);
+
+      &:nth-child(1) {
+        top: 24px;
+        left: 24px;
+      }
+
+      &:nth-child(2) {
+        top: 24px;
+        right: 24px;
+      }
+
+      &:nth-child(3) {
+        right: 24px;
+        bottom: 24px;
+      }
+
+      &:nth-child(4) {
+        bottom: 24px;
+        left: 24px;
+      }
+    }
+
+    img {
+      width: auto;
+      height: 520px;
+    }
+  }
+
+  &__w {
+  }
+
+  @include tablet {
+    &__w {
+      @include flex-column;
+
+      flex-direction: column-reverse;
+      gap: 32px;
+    }
+
+    &__left {
+      gap: 28px;
+      width: 100%;
+    }
+
+    &__right {
+      width: 100%;
+    }
+
+    &__row {
+      display: flex;
+      flex-direction: column;
+      justify-content: start;
+      align-items: start;
+      gap: 8px;
+    }
+
+    &__descr {
+      margin-top: 12px;
+    }
+
+    &__heading {
+      margin-bottom: 20px;
+    }
+  }
+
+  @include mobile {
+    &__left {
+      gap: 20px;
+    }
+
+    &__right {
+      padding: 16px;
+    }
+
+    &__right img {
+      height: 440px;
+    }
+
+    &__heading {
+      margin-bottom: 10px;
+    }
+
+    &__row {
+      padding: 8px 0;
+      font-size: 12px;
+    }
+
+    &__descr {
+      margin-top: 8px;
+    }
+  }
+
+  @include mobile-s {
+    &__right img {
+      height: 360px;
+    }
+  }
+}

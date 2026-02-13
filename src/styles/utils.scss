@@ -1,0 +1,42 @@
+.container {
+  width: 100%;
+  max-width: calc(1520px);
+  margin-inline: auto;
+  padding-inline: 40px;
+
+  @include tablet {
+    padding-inline: 24px;
+  }
+
+  @include mobile {
+    padding-inline: 16px;
+  }
+}
+
+.visually-hidden {
+  @include visually-hidden;
+}
+
+.visible-tablet {
+  @include tablet-above {
+    display: none !important;
+  }
+}
+
+.hidden-tablet {
+  @include tablet {
+    display: none !important;
+  }
+}
+
+.visible-mobile {
+  @include mobile-above {
+    display: none !important;
+  }
+}
+
+.hidden-mobile {
+  @include mobile {
+    display: none !important;
+  }
+}

@@ -1,0 +1,80 @@
+.mak-read {
+  &__w {
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  &-card {
+    padding: 44px;
+    border: 1px solid #424241;
+
+    &__top {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      width: 100%;
+      margin-bottom: 24px;
+    }
+
+    &__count {
+      font-family: var(--font-heading);
+      font-size: 100px;
+      line-height: 1;
+      opacity: 0.3;
+    }
+
+    &__icon {
+      @include square(40px);
+    }
+
+    &__title {
+      margin-bottom: 24px;
+    }
+
+    &__w {
+      @include flex-column;
+
+      gap: 10px;
+
+      &:not(:last-child) {
+        margin-bottom: 16px;
+      }
+
+      p {
+        @include fluid-text(16, 13);
+
+        line-height: 1.4;
+        opacity: 0.7;
+      }
+    }
+  }
+
+  @include tablet {
+    &-card {
+      padding: 20px;
+
+      &__count {
+        font-size: 64px;
+      }
+    }
+  }
+
+  @include mobile {
+    &__w {
+      display: flex;
+      flex-direction: column;
+    }
+
+    &-card {
+      &__icon {
+        @include square(24px);
+      }
+
+      &__count {
+        font-size: 44px;
+      }
+    }
+  }
+}

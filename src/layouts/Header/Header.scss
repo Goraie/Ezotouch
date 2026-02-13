@@ -1,0 +1,262 @@
+.header {
+  position: absolute;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  width: 100vw;
+
+  transform: translateY(0);
+  opacity: 1;
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 52px 32px 16px;
+  }
+
+  &__menu {
+    padding: 4px;
+    background: #ffffff15;
+    border-radius: 8px;
+    backdrop-filter: blur(15px);
+
+    &-list {
+      display: flex;
+      gap: 0;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    &-item {
+      display: block;
+      width: auto;
+      height: auto;
+    }
+
+    &-link {
+      padding: 12px 16px;
+      color: var(--snow);
+      background: #ffffff00;
+      border-radius: 6px;
+
+      @include transition;
+
+      @include hover {
+        color: var(--black);
+        background: #ffffff;
+      }
+    }
+
+    @include tablet {
+      @include visually-hidden;
+    }
+  }
+
+  &__action {
+    display: flex;
+    justify-content: end;
+    align-items: start;
+    gap: 8px;
+    width: 380px;
+
+    @include tablet {
+      @include visually-hidden;
+    }
+  }
+
+  &__btn {
+    padding: 16px 20px;
+
+    span {
+      height: 18px;
+
+      @include transition;
+    }
+
+    &.btn-marketplace {
+      &-wb {
+        .icon {
+          width: 32px;
+          color: #a623e3;
+        }
+
+        @include hover {
+          .icon {
+            color: var(--white);
+          }
+        }
+      }
+
+      &-ozon {
+        .icon {
+          width: 54px;
+          color: #2a62ff;
+        }
+
+        @include hover {
+          .icon {
+            color: var(--white);
+          }
+        }
+      }
+    }
+  }
+
+  &__burger {
+    @include tablet-above {
+      @include visually-hidden;
+    }
+  }
+
+  @include tablet-above {
+    &.fixed {
+      position: fixed;
+      top: auto;
+      bottom: 0;
+      left: 0;
+      width: 100vw;
+      opacity: 1;
+      justify-content: center;
+      transform: translateY(300px);
+      transition: transform 0.3s ease-out;
+      .container {
+        width: fit-content;
+      }
+
+      &.active {
+        transform: translateY(0);
+      }
+
+      .logo {
+        display: none;
+      }
+    }
+  }
+  @include tablet {
+    transition: background 0.2s ease-in;
+    &.fixed {
+      background: var(--black);
+      top: 0;
+      bottom: auto;
+    }
+  }
+
+  @include tablet-above {
+  }
+
+  &-menu {
+    position: absolute;
+    top: 0;
+    right: 0;
+    overflow: hidden;
+    display: flex;
+    justify-content: end;
+    align-items: end;
+    width: 100vw;
+    height: 100vh;
+    background: #00000050;
+    opacity: 0;
+    transition: opacity 0.3s ease-in;
+    pointer-events: none;
+
+    &__popup {
+      position: relative;
+      width: 460px;
+      height: 100%;
+      padding: 72px 24px 40px;
+      background: #0c0c0b;
+      transition: all 0.3s ease-in-out;
+      transform: translateX(1100px);
+
+      @include flex-column;
+      gap: 72px;
+      justify-content: space-around;
+    }
+
+    &__list {
+      @include flex-column;
+
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      text-decoration: none;
+      list-style: none;
+    }
+
+    &__item {
+      width: fit-content;
+      padding: 20px 32px;
+
+      &:not(:last-of-type) {
+        margin-bottom: 6px;
+      }
+    }
+
+    &__action {
+      width: 100%;
+    }
+
+    &__btn {
+      width: 100%;
+      margin-top: 12px;
+    }
+
+    &__burger {
+      position: absolute;
+      top: 16px;
+      right: 24px;
+    }
+
+    &.is-active {
+      opacity: 1;
+      pointer-events: auto;
+
+      .header-menu__popup {
+        display: flex;
+        transform: translateX(0);
+      }
+    }
+
+    @include tablet-above {
+      @include visually-hidden;
+
+      &__popup {
+        transform: translateX(0);
+
+        @include visually-hidden;
+      }
+    }
+  }
+
+  @include tablet {
+    position: fixed;
+    top: 0;
+    &__container {
+      padding: 16px 24px 16px;
+    }
+  }
+
+  @include mobile {
+    &__container {
+      padding: 16px;
+    }
+  }
+
+  @include mobile-m {
+    &-menu {
+      &__popup {
+        width: 320px;
+      }
+    }
+  }
+
+  @include mobile-s {
+    &-menu {
+      &__popup {
+        width: 300px;
+      }
+    }
+  }
+}

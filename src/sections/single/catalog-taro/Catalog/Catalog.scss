@@ -1,0 +1,51 @@
+.catalog {
+  &__w {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: auto;
+    gap: 24px;
+  }
+
+  @include tablet {
+    overflow: hidden;
+
+    &__w {
+      display: flex;
+      flex-wrap: nowrap;
+    }
+  }
+}
+
+@media (min-width: 1420px) {
+  .catalog__w--mobile {
+    display: none !important;
+  }
+}
+
+@media (max-width: 1419px) {
+  .catalog__w--desktop {
+    display: none !important;
+  }
+}
+
+.catalog {
+  overflow: hidden;
+}
+.catalog__slider {
+  padding: 20px 0;
+}
+
+.swiper-slide .card {
+  height: 100%;
+  margin: 0 auto;
+  max-width: 360px;
+}
+
+.swiper-pagination-bullet {
+  background: #666;
+  opacity: 0.5;
+}
+.swiper-pagination-bullet-active {
+  background: #1a73e8;
+  opacity: 1;
+}

@@ -1,0 +1,133 @@
+.btn {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  max-height: 54px;
+  padding: 18px 26px;
+  font-size: 16px;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--white);
+  background: #ffffff00;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #ffffff50;
+  border-radius: 8px;
+
+  @include transition;
+
+  span {
+    white-space: nowrap;
+  }
+
+  // backdrop-filter: blur(10px);
+
+  @include hover {
+    color: var(--black);
+    background: #ffffff;
+  }
+
+  &:active {
+    color: var(--black);
+    background: #c3c3c3;
+  }
+
+  &-primary {
+    color: var(--black);
+    background: #ffffff;
+    border: none;
+
+    @include hover {
+      color: var(--white);
+      background: #986a3e;
+    }
+
+    &:active {
+      color: var(--white);
+      background: #9e632b;
+    }
+  }
+
+  & > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  .bg {
+    position: absolute;
+    z-index: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  &-marketplace {
+    position: relative;
+    overflow: hidden;
+    padding: 10px;
+    color: #ffffff;
+    background: #202020;
+    border: none;
+
+    .bg {
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+
+      @include transition;
+    }
+
+    .icon {
+      height: 15px;
+    }
+
+    &-wb {
+      .bg {
+        background: linear-gradient(45deg, #7404f9 0%, #f548d6 100%);
+      }
+
+      .icon {
+        width: 32px;
+        transform: translateY(-1px);
+      }
+    }
+
+    &-ozon {
+      .bg {
+        background: #005dff;
+      }
+
+      .icon {
+        width: 50px;
+      }
+    }
+
+    @include hover {
+      color: #ffffff;
+      background: #202020;
+
+      .bg {
+        opacity: 1;
+      }
+    }
+
+    &.white {
+      color: var(--black);
+      background: var(--white);
+
+      @include hover {
+        color: var(--white);
+        background: var(--white);
+
+        @include hover {
+          .bg {
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+}

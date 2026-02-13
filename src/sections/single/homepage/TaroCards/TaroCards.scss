@@ -1,0 +1,80 @@
+.list-cards {
+  overflow: hidden;
+
+  &-top {
+    .section-top__title {
+      max-width: 840px;
+    }
+  }
+
+  &__w {
+    position: relative;
+    display: flex;
+    align-items: start;
+    gap: 24px;
+  }
+
+  &__arrow {
+    @include flex-center;
+
+    position: absolute;
+    z-index: 100;
+    top: calc(50% - 22px);
+    width: 44px;
+    height: 44px;
+    background: #ffffff;
+    border: 1px solid #ffffff20;
+    border-radius: 100%;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+
+    @include transition;
+
+    svg {
+      width: 8px;
+      height: 12px;
+      color: var(--black);
+
+      @include transition;
+    }
+
+    @include hover {
+      background: #ffffff20;
+
+      svg {
+        color: var(--white);
+      }
+    }
+
+    &-prev {
+      left: -16px;
+    }
+
+    &-next {
+      right: -16px;
+
+      svg {
+        transform: rotate(180deg);
+      }
+    }
+
+    @include tablet {
+      @include visually-hidden;
+    }
+  }
+
+  &__btn {
+    width: 100%;
+    margin-top: 32px;
+
+    @include tablet-above {
+      @include visually-hidden;
+    }
+  }
+
+  @include tablet {
+    &__w {
+      flex-wrap: nowrap;
+    }
+  }
+}

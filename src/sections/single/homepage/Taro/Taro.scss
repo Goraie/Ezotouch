@@ -1,0 +1,89 @@
+.taro {
+  &__w {
+    position: relative;
+    display: flex;
+    justify-content: stretch;
+  }
+
+  &__left {
+    width: 100%;
+  }
+
+  &__right {
+    position: absolute;
+    top: -60px;
+    right: 0;
+    width: auto;
+    height: calc(100% + 100px);
+    object-fit: contain;
+  }
+
+  &-card {
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    gap: 24px;
+    padding: 30px 0;
+    border-width: 1px 0;
+    border-style: solid;
+    border-color: #f1f1f124;
+
+    &__text {
+      max-width: 460px;
+
+      span {
+        display: block;
+        margin-top: 4px;
+      }
+    }
+  }
+
+  &__btn {
+    margin-top: 32px;
+  }
+
+  @include laptop {
+    &__right {
+      max-width: 640px;
+    }
+
+    &-card__text {
+      max-width: 400px;
+    }
+  }
+
+  @media (width <= 1180px) {
+    &__right {
+      max-width: 520px;
+      height: calc(100%);
+    }
+
+    &-card__text {
+      max-width: 320px;
+    }
+  }
+
+  @include tablet {
+    &__w {
+      flex-direction: column;
+    }
+
+    &__right {
+      position: relative;
+      inset: 0;
+      max-width: 100%;
+      height: auto;
+      margin-top: 24px;
+    }
+
+    &-card__text {
+      max-width: 620px;
+    }
+  }
+
+  @include mobile {
+    &__btn {
+      width: 100%;
+    }
+  }
+}

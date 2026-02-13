@@ -1,0 +1,151 @@
+.article {
+  .container {
+    position: relative;
+    display: grid;
+    grid-template-columns: 320px auto 320px;
+    gap: 24px;
+  }
+
+  .sidebar {
+    @include flex-column;
+
+    position: sticky;
+    top: 40px;
+    gap: 0;
+    width: 100%;
+    height: fit-content;
+    background: #131313;
+
+    &__title {
+      padding: 20px;
+    }
+
+    &__list {
+      width: 100%;
+      list-style: none;
+
+      li {
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        gap: 12px;
+        width: 100%;
+        padding: 20px;
+        font-weight: 500;
+        border-top: 1px solid #ffffff10;
+
+        a {
+          display: block;
+          text-decoration: none;
+        }
+
+        span {
+          opacity: 0.4;
+        }
+      }
+    }
+  }
+
+  &__w {
+    &:not(:last-of-type) {
+      margin-bottom: 80px;
+    }
+
+    img {
+      border-radius: 40px;
+    }
+  }
+
+  &__title {
+    margin-bottom: 24px;
+  }
+
+  &__text {
+    p {
+      margin-top: 20px;
+    }
+  }
+
+  &__table {
+    width: 100%;
+    margin: 20px 0;
+    color: #ffffff;
+    background-color: #121212;
+    border-collapse: collapse;
+
+    & th {
+      width: 33%;
+      padding: 20px;
+      font-weight: 14;
+      text-align: center;
+      background-color: #1a1a1a;
+      border-bottom: 1px solid #333333;
+      opacity: 0.5;
+    }
+
+    & td {
+      width: 33%;
+      padding: 20px;
+      text-align: center;
+      border-bottom: 1px solid #333333;
+    }
+
+    & td:nth-child(2) {
+      text-underline-offset: 4px;
+
+      a {
+        position: relative;
+        text-decoration: none;
+        cursor: pointer;
+
+        &::before {
+          content: '';
+          position: absolute;
+          bottom: -2px;
+          left: 0;
+          display: block;
+          width: 0%;
+          height: 1px;
+          background: #ffffff;
+          transition: width 0.15s ease-out;
+        }
+
+        @include hover {
+          &::before {
+            width: 100%;
+          }
+        }
+      }
+    }
+
+    & tr:last-child td {
+      border-bottom: none;
+    }
+  }
+
+  &__card {
+    padding: 28px;
+    background: #131313;
+  }
+
+  &__heading {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    span {
+      display: block;
+      opacity: 0.5;
+    }
+  }
+
+  &__cit {
+    margin-top: 28px;
+
+    p {
+      margin-top: 16px;
+      font-size: 16px;
+      opacity: 0.8;
+    }
+  }
+}

@@ -1,0 +1,35 @@
+.section-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  margin-bottom: 40px;
+
+  &__title {
+    max-width: 970px;
+  }
+
+  &__right {
+    max-width: 325px;
+  }
+
+  &__text {
+    width: 100%;
+    margin-bottom: 16px;
+  }
+
+  @include tablet {
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    margin-bottom: 32px;
+
+    &__btn {
+      @include visually-hidden;
+    }
+
+    &__right {
+      max-width: 480px;
+      margin-top: 16px;
+    }
+  }
+}

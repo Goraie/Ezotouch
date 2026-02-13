@@ -1,0 +1,11 @@
+#catalog-taro {
+  .offer {
+    &__title {
+      max-width: 620px;
+    }
+
+    &__right {
+      max-width: 410px;
+    }
+  }
+}
