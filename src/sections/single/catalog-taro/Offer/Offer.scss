@@ -2,6 +2,15 @@
   .offer {
     &__title {
       max-width: 620px;
+
+      &-word {
+        @include mobile {
+          &::after {
+            content: '\A';
+            white-space: pre;
+          }
+        }
+      }
     }
 
     &__right {

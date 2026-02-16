@@ -78,6 +78,15 @@
   &-cat {
     .offer__title {
       max-width: 620px;
+
+      &-word {
+        @include mobile {
+          &::after {
+            content: '\A';
+            white-space: pre;
+          }
+        }
+      }
     }
 
     .offer__text {

@@ -31,7 +31,19 @@
 	<section class="offer offer-cat container" aria-labelledby="offer-title">
 		<div class="offer__w">
 			<div class="offer__left">
-				<h1 class="offer__title"><?php echo $term_name; ?></h1>
+				<h1 class="offer__title">
+					<?php
+					if ($term_slug == 'taro' && strpos($term_name, 'Библиотека') === 0) {
+						$title_parts = explode(' ', $term_name, 2);
+						echo '<span class="offer__title-word">' . esc_html($title_parts[0]) . '</span>';
+						if (isset($title_parts[1])) {
+							echo ' ' . esc_html($title_parts[1]);
+						}
+					} else {
+						echo esc_html($term_name);
+					}
+					?>
+				</h1>
 				<?php if ($description): ?>
 					<div class="offer__text-mobile text-2">
 						<?php echo $description; ?>
