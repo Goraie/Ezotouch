@@ -1,0 +1,50 @@
+.list-cards__w {
+  overflow: visible;
+}
+
+.list-cards__slider {
+  overflow: hidden;
+  flex: 1;
+  min-width: 0;
+}
+
+.list-cards__slider .swiper {
+  width: 100%;
+}
+
+.list-cards__slider .swiper .swiper-wrapper {
+  align-items: stretch;
+  display: flex;
+}
+
+.list-cards__slider .swiper .swiper-slide {
+  display: flex;
+  align-items: stretch;
+  height: auto;
+}
+
+.list-cards__slider .swiper .swiper-slide .card {
+  height: 100%;
+  width: 100%;
+}
+
+.list-cards__arrow-prev {
+  left: -23px;
+}
+
+.list-cards__arrow-next {
+  right: -23px;
+}
+
+.card__title > a {
+  text-decoration: none;
+  transition: opacity 0.2s ease-out;
+}
+.card__title > a:hover {
+  opacity: 0.8;
+}
+
+.space__action {
+  position: relative;
+  z-index: 24;
+}
