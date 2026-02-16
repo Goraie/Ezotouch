@@ -520,6 +520,11 @@
       </div>
     </div>
   </section>
+	
+	  <?php include_once('layout/section/space.php'); ?>
+  <?php include_once('layout/section/world.php'); ?>
+  <?php include_once('layout/section/library.php'); ?>
+	
 </main>
 
 <?php include_once('layout/global/footer.php'); ?>

@@ -20,7 +20,7 @@
 						<a class="header__menu-link" href="<?php echo esc_url( home_url( '/deck-type/mak' ) ); ?>">МАК</a>
 					</li>
 					<li class="header__menu-item">
-						<a class="header__menu-link is-active" href="<?php echo esc_url( home_url( '/' ) ); ?>">О нас</a>
+						<a class="header__menu-link is-active" href="#library">О нас</a>
 					</li>
 					<li class="header__menu-item">
 						<a class="header__menu-link is-active" href="<?php echo esc_url( home_url( '/' ) ); ?>">Карта дня</a>
@@ -80,7 +80,7 @@
 						<a class="header-menu__link big-text-m" href="<?php echo esc_url( home_url( '/deck-type/mak' ) ); ?>">МАК</a>
 					</li>
 					<li class="header-menu__item">
-						<a class="header-menu__link big-text-m is-active" href="<?php echo esc_url( home_url( '/' ) ); ?>">О нас</a>
+						<a class="header-menu__link big-text-m is-active" href="<?php echo esc_url( home_url( '#library' ) ); ?>">О нас</a>
 					</li>
 					<li class="header-menu__item">
 						<a class="header-menu__link big-text-m is-active" href="<?php echo esc_url( home_url( '/' ) ); ?>">Карта дня</a>

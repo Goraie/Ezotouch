@@ -87,7 +87,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const swiper = new Swiper(swiperEl, {
       loop: true,
       grabCursor: true,
-      slidesPerView: 1.2,
+      slidesPerView: 1.3,
       spaceBetween: 20,
       speed: 400,
 

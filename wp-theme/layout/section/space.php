@@ -24,9 +24,9 @@
 	<div class="space__w">
 		<div class="container">
 			<div class="space__path"></div>
+			<div class="space__cont-circ"></div>
 
 			<div class="space__cont">
-				<div class="space__cont-circ"></div>
 				<h2>Найдите свой мир во вселенной EZOTOUCH</h2>
 				<div class="space__mid">
 					<div class="space__text big-text-m">
@@ -56,12 +56,12 @@
 					</div>
 				</div>
 				<div class="space__action">
-					<a class="btn btn-primary space__btn" href="<?php echo esc_url( home_url( '/deck-type/taro' ) ); ?>">
+					<button class="btn btn-primary space__btn" type="button">
 						<span>Перейти в Библиотеку Таро</span><span class="bg"></span>
-					</a>
-					<a class="btn space__btn" href="<?php echo esc_url( home_url( '/deck-type/mak' ) ); ?>">
+					</button>
+					<button class="btn space__btn" type="button">
 						<span>Перейти в библиотеку МАК</span><span class="bg"></span>
-					</a>
+					</button>
 				</div>
 			</div>
 

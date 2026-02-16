@@ -48,3 +48,6 @@
   position: relative;
   z-index: 24;
 }
+.section-top{
+	align-items: start;
+}

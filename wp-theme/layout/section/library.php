@@ -1,4 +1,4 @@
-<section class="library gsap-smooth" aria-labelledby="offer-title">
+<section class="library gsap-smooth" id="library" aria-labelledby="offer-title">
 	<div class="container">
 		<div class="section-top">
 			<h2 class="section-top__title">Погрузитесь в волшебную библиотеку EZOTOUCH</h2>
@@ -36,7 +36,7 @@
 					<img src="<?php bloginfo('template_directory'); ?>/assets/images/taro-bg.png"
 						sizes="(min-width: 2880px) 2880px, 100vw" width="2880" height="1600" alt decoding="async" loading="lazy"
 						class="popup__img">
-					<a class="btn btn-primary popup__btn" href="<?php echo esc_url( home_url( '/deck-type/taro' ) ); ?>"><span>Перейти в библиотеку Таро</span><span
+					<a class="btn btn-primary popup__btn" href="<?php echo esc_url( home_url( '/catalog-taro' ) ); ?>"><span>Перейти в библиотеку Таро</span><span
 							class="bg"></span></a>
 				</div>
 				<div class="popup__line"></div>
@@ -44,7 +44,7 @@
 					<img src="<?php bloginfo('template_directory'); ?>/assets/images/mak-bg.png"
 						sizes="(min-width: 2880px) 2880px, 100vw" width="2880" height="1600" alt decoding="async" loading="lazy"
 						class="popup__img">
-					<a class="btn btn-primary popup__btn" href="<?php echo esc_url( home_url( '/deck-type/mak' ) ); ?>"><span>Перейти в библиотеку Мак</span><span
+					<a class="btn btn-primary popup__btn" href="<?php echo esc_url( home_url( '/catalog-mak' ) ); ?>"><span>Перейти в библиотеку Мак</span><span
 							class="bg"></span></a>
 				</div>
 			</div>

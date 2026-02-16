@@ -15,7 +15,7 @@
 			<?php endif; ?>
 		</div>
 		<div class="card__action">
-			<a class="btn btn card__btn" href="<?php echo esc_url( $permalink ?? home_url( '/pack' ) ); ?>"><span>Подробнее</span><span class="bg"></span></a>
+			<a class="btn btn card__btn" href="<?php echo esc_url( home_url( '/pack' ) ); ?>"><span>Подробнее</span><span class="bg"></span></a>
 			<div class="card__bottom">
 				<a class="btn btn btn-marketplace btn-marketplace-wb" href="https://www.wildberries.ru/brands/312174691-ezotouch" target="_blank" rel="noopener noreferrer"><span class="icon">
 						<svg fill="currentColor" stroke="none">
