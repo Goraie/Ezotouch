@@ -9,8 +9,8 @@ export default () => {
         <div className="container">
           <div className="space__path"></div>
 
+          <div className="space__cont-circ"></div>
           <div className="space__cont">
-            <div className="space__cont-circ"></div>
             <h2>Найдите свой мир во&nbsp;вселенной EZOTOUCH</h2>
             <div className="space__mid">
               <div className="space__text big-text-m">
