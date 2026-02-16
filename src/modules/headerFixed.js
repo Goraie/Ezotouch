@@ -18,41 +18,32 @@ function headerTogglePos(header, top, display) {
 function headerDesk(header, block) {
   window.addEventListener('scroll', () => {
     const offerHeight = block.offsetHeight
+    const maxScroll = document.documentElement.scrollHeight - window.innerHeight
+    const isNearBottom = window.scrollY >= maxScroll - resetOffset
 
-    if (window.scrollY > 200 && window.scrollY < offerHeight - 200) {
+    if (window.scrollY <= 200) {
+      headerTogglePos(header, false, true)
+      header.classList.remove('fixed')
+      header.classList.remove('active')
+    } else if (window.scrollY > 200 && window.scrollY < offerHeight - 200) {
       headerTogglePos(header, true, false)
-      header.style.transform = 'translateY(100px)'
       header.classList.add('fixed')
+      header.classList.remove('active')
     } else if (
-      window.scrollY > offerHeight - resetOffset &&
+      window.scrollY >= offerHeight - resetOffset &&
       window.scrollY < offerHeight
     ) {
       headerTogglePos(header, true, true)
-      header.style.transform = 'translateY(100px)'
       header.classList.add('fixed')
-    } else if (
-      window.scrollY > offerHeight &&
-      window.scrollY <
-        document.documentElement.scrollHeight -
-          document.documentElement.clientHeight -
-          resetOffset
-    ) {
+      header.classList.add('active')
+    } else if (window.scrollY >= offerHeight && !isNearBottom) {
       headerTogglePos(header, true, true)
-      header.style.transform = 'translateY(0)'
       header.classList.add('fixed')
-    } else if (
-      window.scrollY >
-      document.documentElement.scrollHeight -
-        document.documentElement.clientHeight -
-        resetOffset
-    ) {
+      header.classList.add('active')
+    } else if (isNearBottom) {
       headerTogglePos(header, true, true)
-      header.style.transform = 'translateY(100px)'
       header.classList.add('fixed')
-    } else {
-      headerTogglePos(header, false, true)
-      header.style.transform = 'translateY(0)'
-      header.classList.remove('fixed')
+      header.classList.remove('active')
     }
   })
 }
