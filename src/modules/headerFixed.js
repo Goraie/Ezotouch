@@ -1,22 +1,6 @@
-const header = document.querySelector('.header'),
-  footer = document.querySelector('.footer'),
-  body = document.querySelector('body'),
-  block = document.querySelector('main').firstChild,
-  resetOffset = 300
+const resetOffset = 300
 
-if (window.outerWidth > 1024) {
-  window.addEventListener('DOMContentLoaded', (e) => headerDesk())
-} else {
-  window.addEventListener('scroll', (e) => {
-    if (window.scrollY > 320) {
-      header.classList.add('fixed')
-    } else {
-      header.classList.remove('fixed')
-    }
-  })
-}
-
-function headerTogglePos(top = Boolean, display = Boolean) {
+function headerTogglePos(header, top, display) {
   if (top) {
     header.style.top = 'auto'
     header.style.bottom = '0'
@@ -31,19 +15,19 @@ function headerTogglePos(top = Boolean, display = Boolean) {
   }
 }
 
-function headerDesk() {
-  window.addEventListener('scroll', (e) => {
-    let offerHeight = block.offsetHeight
+function headerDesk(header, block) {
+  window.addEventListener('scroll', () => {
+    const offerHeight = block.offsetHeight
 
     if (window.scrollY > 200 && window.scrollY < offerHeight - 200) {
-      headerTogglePos(true, false)
+      headerTogglePos(header, true, false)
       header.style.transform = 'translateY(100px)'
       header.classList.add('fixed')
     } else if (
       window.scrollY > offerHeight - resetOffset &&
       window.scrollY < offerHeight
     ) {
-      headerTogglePos(true, true)
+      headerTogglePos(header, true, true)
       header.style.transform = 'translateY(100px)'
       header.classList.add('fixed')
     } else if (
@@ -53,7 +37,7 @@ function headerDesk() {
           document.documentElement.clientHeight -
           resetOffset
     ) {
-      headerTogglePos(true, true)
+      headerTogglePos(header, true, true)
       header.style.transform = 'translateY(0)'
       header.classList.add('fixed')
     } else if (
@@ -62,13 +46,35 @@ function headerDesk() {
         document.documentElement.clientHeight -
         resetOffset
     ) {
-      headerTogglePos(true, true)
+      headerTogglePos(header, true, true)
       header.style.transform = 'translateY(100px)'
       header.classList.add('fixed')
     } else {
-      headerTogglePos(false, true)
+      headerTogglePos(header, false, true)
       header.style.transform = 'translateY(0)'
       header.classList.remove('fixed')
     }
   })
 }
+
+function initHeaderFixed() {
+  const header = document.querySelector('.header')
+  if (!header) return
+
+  if (window.outerWidth > 1024) {
+    const main = document.querySelector('main')
+    const block = main?.firstElementChild ?? main?.firstChild
+    if (!block) return
+    headerDesk(header, block)
+  } else {
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 320) {
+        header.classList.add('fixed')
+      } else {
+        header.classList.remove('fixed')
+      }
+    })
+  }
+}
+
+window.addEventListener('DOMContentLoaded', initHeaderFixed)
