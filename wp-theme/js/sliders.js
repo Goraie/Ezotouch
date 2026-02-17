@@ -1,31 +1,28 @@
-document.addEventListener("DOMContentLoaded", function () {
-  initCatalogSlider();
+document.addEventListener('DOMContentLoaded', function () {
+  initCatalogSlider()
 
   window.addEventListener(
-    "resize",
+    'resize',
     debounce(function () {
-      initCatalogSlider();
-    }, 250),
-  );
-});
+      initCatalogSlider()
+    }, 250)
+  )
+})
 
 function initCatalogSlider() {
   if (window.innerWidth >= 1420) {
-    const swiperEl = document.querySelector('[data-swiper="catalog"]');
+    const swiperEl = document.querySelector('[data-swiper="catalog"]')
     if (swiperEl && swiperEl.swiper) {
-      swiperEl.swiper.destroy(true, true);
+      swiperEl.swiper.destroy(true, true)
     }
-    return;
+    return
   }
 
-  const swiperEl = document.querySelector('[data-swiper="catalog"]');
-  if (!swiperEl || swiperEl.swiper) return;
+  const swiperEl = document.querySelector('[data-swiper="catalog"]')
+  if (!swiperEl || swiperEl.swiper) return
 
   const swiper = new Swiper(swiperEl, {
     loop: true,
-
-    slidesPerView: "auto",
-
     centeredSlides: false,
 
     spaceBetween: 20,
@@ -36,58 +33,76 @@ function initCatalogSlider() {
       disableOnInteraction: false,
     },
     watchSlidesProgress: true,
-    on: {
-      init: function () {
-        this.slides.forEach((slide) => {
-          slide.style.width = "320px";
-        });
-      },
-      slideChange: function () {
-        this.slides.forEach((slide) => {
-          slide.style.width = "320px";
-        });
-      },
-    },
-
+    slidesPerView: 1.3,
     breakpoints: {
       480: {
+        slidesPerView: 1.6,
         spaceBetween: 20,
       },
       768: {
         spaceBetween: 24,
+        slidesPerView: 2,
+      },
+      1024: {
+        spaceBetween: 24,
+        slidesPerView: 3,
       },
     },
-  });
+
+    // Слайды с фикс шириной
+
+    // slidesPerView: 'auto',
+    // on: {
+    // 	init: function () {
+    // 		this.slides.forEach(slide => {
+    // 			slide.style.width = '320px'
+    // 		})
+    // 	},
+    // 	slideChange: function () {
+    // 		this.slides.forEach(slide => {
+    // 			slide.style.width = '320px'
+    // 		})
+    // 	},
+    // },
+    // breakpoints: {
+    // 	480: {
+    // 		spaceBetween: 20,
+    // 	},
+    // 	768: {
+    // 		spaceBetween: 24,
+    // 	},
+    // },
+  })
 }
 
 function debounce(func, wait) {
-  let timeout;
+  let timeout
   return function executedFunction(...args) {
     const later = () => {
-      clearTimeout(timeout);
-      func(...args);
-    };
-    clearTimeout(timeout);
-    timeout = setTimeout(later, wait);
-  };
+      clearTimeout(timeout)
+      func(...args)
+    }
+    clearTimeout(timeout)
+    timeout = setTimeout(later, wait)
+  }
 }
 
-document.addEventListener("DOMContentLoaded", function () {
-  const swiperEls = document.querySelectorAll(".swiper[data-list-cards]");
+document.addEventListener('DOMContentLoaded', function () {
+  const swiperEls = document.querySelectorAll('.swiper[data-list-cards]')
 
   swiperEls.forEach((swiperEl) => {
-    if (!swiperEl || swiperEl.swiper) return;
+    if (!swiperEl) return
+    // if (!swiperEl || swiperEl.swiper) return
 
-    const wrap = swiperEl.closest(".list-cards__w");
-    const prevBtn = wrap?.querySelector(".list-cards__arrow-prev");
-    const nextBtn = wrap?.querySelector(".list-cards__arrow-next");
+    const wrap = swiperEl.closest('.list-cards__w')
+    const prevBtn = wrap?.querySelector('.list-cards__arrow-prev')
+    const nextBtn = wrap?.querySelector('.list-cards__arrow-next')
 
-    if (!prevBtn || !nextBtn) return;
+    if (!prevBtn || !nextBtn) return
 
     const swiper = new Swiper(swiperEl, {
       loop: true,
       grabCursor: true,
-      slidesPerView: 1.3,
       spaceBetween: 20,
       speed: 400,
 
@@ -96,14 +111,19 @@ document.addEventListener("DOMContentLoaded", function () {
         prevEl: prevBtn,
       },
 
+      slidesPerView: 1.3,
       breakpoints: {
         480: {
           slidesPerView: 1.6,
           spaceBetween: 20,
         },
+        576: {
+          spaceBetween: 24,
+          slidesPerView: 2.4,
+        },
         768: {
           spaceBetween: 24,
-          slidesPerView: 2,
+          slidesPerView: 2.6,
         },
         1024: {
           spaceBetween: 24,
@@ -114,184 +134,184 @@ document.addEventListener("DOMContentLoaded", function () {
           slidesPerView: 4,
         },
       },
-    });
-  });
-});
+    })
+  })
+})
 
 // Space block GSAP animation (desktop only)
 function initSpaceAnimation() {
   if (window.innerWidth <= 1024) {
-    return null;
+    return null
   }
 
-  var heroSection = document.querySelector(".space");
-  var container = document.querySelector(".space .container");
-  var boxes = document.querySelectorAll(".space__card");
-  var circ = document.querySelector(".space__cont-circ");
+  var heroSection = document.querySelector('.space')
+  var container = document.querySelector('.space .container')
+  var boxes = document.querySelectorAll('.space__card')
+  var circ = document.querySelector('.space__cont-circ')
 
   if (!heroSection || !container || boxes.length === 0) {
-    return null;
+    return null
   }
 
-  var centerX = container.offsetWidth / 2;
-  var centerY = container.offsetHeight / 2;
-  var diametr = container.offsetWidth;
-  var radius = diametr / 2;
-  var totalBoxes = boxes.length;
-  var angleStep = 360 / totalBoxes;
+  var centerX = container.offsetWidth / 2
+  var centerY = container.offsetHeight / 2
+  var diametr = container.offsetWidth
+  var radius = diametr / 2
+  var totalBoxes = boxes.length
+  var angleStep = 360 / totalBoxes
 
-  var baseAngles = [];
+  var baseAngles = []
 
   boxes.forEach(function (box, i) {
-    const angle = i * angleStep;
-    baseAngles.push(angle);
+    const angle = i * angleStep
+    baseAngles.push(angle)
 
-    const rad = (angle * Math.PI) / 180;
-    const x = centerX + radius * Math.cos(rad);
-    const y = centerY + radius * Math.sin(rad);
+    const rad = (angle * Math.PI) / 180
+    const x = centerX + radius * Math.cos(rad)
+    const y = centerY + radius * Math.sin(rad)
 
     gsap.set(box, {
       x: x - box.offsetWidth / 2,
       y: y - box.offsetHeight / 2,
-    });
-  });
+    })
+  })
 
-  var isAnimating = false;
-  var rotationTimeline = null;
+  var isAnimating = false
+  var rotationTimeline = null
 
   function createAnimation() {
     if (rotationTimeline) {
-      rotationTimeline.kill();
+      rotationTimeline.kill()
     }
 
     rotationTimeline = gsap.timeline({
       scrollTrigger: {
         trigger: heroSection,
-        start: "top bottom",
-        end: "bottom top",
+        start: 'top bottom',
+        end: 'bottom top',
         scrub: 1,
-        toggleActions: "play none none reverse",
+        toggleActions: 'play none none reverse',
         onEnter: function () {
-          isAnimating = true;
+          isAnimating = true
         },
         onLeave: function () {
-          isAnimating = false;
+          isAnimating = false
         },
         onEnterBack: function () {
-          isAnimating = true;
+          isAnimating = true
         },
         onLeaveBack: function () {
-          isAnimating = false;
+          isAnimating = false
         },
       },
-    });
+    })
 
     rotationTimeline.to(
       {},
       {
         duration: 1,
         onUpdate: function () {
-          var progress = rotationTimeline.progress();
+          var progress = rotationTimeline.progress()
 
-          var rotationAngle = progress * 30;
+          var rotationAngle = progress * 30
 
           boxes.forEach(function (box, i) {
-            var currentAngle = baseAngles[i] + rotationAngle;
-            var rad = (currentAngle * Math.PI) / 180;
+            var currentAngle = baseAngles[i] + rotationAngle
+            var rad = (currentAngle * Math.PI) / 180
 
-            var x = centerX + radius * Math.cos(rad);
-            var y = centerY + radius * Math.sin(rad);
+            var x = centerX + radius * Math.cos(rad)
+            var y = centerY + radius * Math.sin(rad)
 
-            rotateCirc(currentAngle);
+            rotateCirc(currentAngle)
 
             gsap.set(box, {
               x: x - box.offsetWidth / 2,
               y: y - box.offsetHeight / 2,
-            });
-          });
+            })
+          })
         },
-      },
-    );
+      }
+    )
   }
 
   function rotateCirc(angle) {
     if (circ) {
       circ.style.transform =
-        "translate(-50%, -50%) rotate(-" + angle / 2 + "deg)";
+        'translate(-50%, -50%) rotate(-' + angle / 2 + 'deg)'
     }
   }
 
-  createAnimation();
+  createAnimation()
 
   return {
     destroy: function () {
       if (rotationTimeline) {
-        rotationTimeline.kill();
-        rotationTimeline = null;
+        rotationTimeline.kill()
+        rotationTimeline = null
       }
       boxes.forEach(function (box) {
-        gsap.set(box, { clearProps: "x,y" });
-      });
+        gsap.set(box, { clearProps: 'x,y' })
+      })
     },
-  };
+  }
 }
 
-var spaceAnimationInstance = null;
+var spaceAnimationInstance = null
 
 function initSpaceAnimationWithDelay() {
   setTimeout(function () {
     if (spaceAnimationInstance) {
-      spaceAnimationInstance.destroy();
-      spaceAnimationInstance = null;
+      spaceAnimationInstance.destroy()
+      spaceAnimationInstance = null
     }
-    spaceAnimationInstance = initSpaceAnimation();
-  }, 100);
+    spaceAnimationInstance = initSpaceAnimation()
+  }, 100)
 }
 
-if (document.readyState === "loading") {
-  document.addEventListener("DOMContentLoaded", initSpaceAnimationWithDelay);
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initSpaceAnimationWithDelay)
 } else {
-  initSpaceAnimationWithDelay();
+  initSpaceAnimationWithDelay()
 }
 
-var spaceResizeTimer;
-window.addEventListener("resize", function () {
-  clearTimeout(spaceResizeTimer);
+var spaceResizeTimer
+window.addEventListener('resize', function () {
+  clearTimeout(spaceResizeTimer)
   spaceResizeTimer = setTimeout(function () {
     if (spaceAnimationInstance) {
-      spaceAnimationInstance.destroy();
-      spaceAnimationInstance = null;
+      spaceAnimationInstance.destroy()
+      spaceAnimationInstance = null
     }
     if (window.innerWidth > 1024) {
-      spaceAnimationInstance = initSpaceAnimation();
+      spaceAnimationInstance = initSpaceAnimation()
     } else {
-      var boxes = document.querySelectorAll(".space__card");
+      var boxes = document.querySelectorAll('.space__card')
       boxes.forEach(function (box) {
-        gsap.set(box, { clearProps: "x,y" });
-      });
+        gsap.set(box, { clearProps: 'x,y' })
+      })
     }
-  }, 250);
-});
+  }, 250)
+})
 
 // Space block Swiper slider (mobile only)
 function initSpaceSlider() {
-  var spaceList = document.querySelector(".space__list.swiper");
-  if (!spaceList) return;
+  var spaceList = document.querySelector('.space__list.swiper')
+  if (!spaceList) return
 
-  var isMobile = window.innerWidth <= 1024;
-  var swiperInstance = spaceList.swiper;
+  var isMobile = window.innerWidth <= 1024
+  var swiperInstance = spaceList.swiper
 
   if (isMobile && !swiperInstance) {
-    var boxes = document.querySelectorAll(".space__card");
+    var boxes = document.querySelectorAll('.space__card')
     if (window.gsap) {
       boxes.forEach(function (box) {
-        window.gsap.set(box, { clearProps: "x,y" });
-      });
+        window.gsap.set(box, { clearProps: 'x,y' })
+      })
     }
 
     swiperInstance = new Swiper(spaceList, {
       loop: true,
-      slidesPerView: "auto",
+      slidesPerView: 'auto',
       centeredSlides: true,
       spaceBetween: 20,
       speed: 700,
@@ -307,39 +327,39 @@ function initSpaceSlider() {
           spaceBetween: 24,
         },
       },
-    });
+    })
   } else if (!isMobile && swiperInstance) {
-    swiperInstance.destroy(true, true);
-    spaceList.swiper = null;
+    swiperInstance.destroy(true, true)
+    spaceList.swiper = null
   }
 }
 
-if (document.readyState === "loading") {
-  document.addEventListener("DOMContentLoaded", initSpaceSlider);
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initSpaceSlider)
 } else {
-  initSpaceSlider();
+  initSpaceSlider()
 }
 
-var spaceSliderResizeTimer;
-window.addEventListener("resize", function () {
-  clearTimeout(spaceSliderResizeTimer);
+var spaceSliderResizeTimer
+window.addEventListener('resize', function () {
+  clearTimeout(spaceSliderResizeTimer)
   spaceSliderResizeTimer = setTimeout(function () {
-    initSpaceSlider();
-  }, 250);
-});
+    initSpaceSlider()
+  }, 250)
+})
 
 function initIndividualSmoothAppear() {
   const config = {
     duration: 1,
-    ease: "power2.out",
+    ease: 'power2.out',
     scrollTrigger: {
-      start: "top 75%",
+      start: 'top 75%',
       once: true,
-      toggleActions: "play none none reverse",
+      toggleActions: 'play none none reverse',
     },
-  };
+  }
 
-  gsap.utils.toArray(".gsap-smooth").forEach((element) => {
+  gsap.utils.toArray('.gsap-smooth').forEach((element) => {
     gsap.fromTo(
       element,
       {
@@ -354,13 +374,13 @@ function initIndividualSmoothAppear() {
         scrollTrigger: Object.assign({}, config.scrollTrigger, {
           trigger: element,
         }),
-      },
-    );
-  });
+      }
+    )
+  })
 }
 
-if (document.readyState === "loading") {
-  document.addEventListener("DOMContentLoaded", initIndividualSmoothAppear);
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initIndividualSmoothAppear)
 } else {
-  initIndividualSmoothAppear();
+  initIndividualSmoothAppear()
 }
