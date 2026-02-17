@@ -59,16 +59,16 @@
         <h4 class="sidebar__title">Содержание</h4>
         <ul class="sidebar__list">
           <li><span>01</span>
-            <a class="text-2" href="<?php echo esc_url( home_url( '/#n1' ) ); ?>">Заголовок 1</a>
+            <a class="text-2" href="<?php echo esc_url(home_url('/#n1')); ?>">Заголовок 1</a>
           </li>
           <li><span>02</span>
-            <a class="text-2" href="<?php echo esc_url( home_url( '/#n1' ) ); ?>">Заголовок 2</a>
+            <a class="text-2" href="<?php echo esc_url(home_url('/#n1')); ?>">Заголовок 2</a>
           </li>
           <li><span>03</span>
-            <a class="text-2" href="<?php echo esc_url( home_url( '/#n1' ) ); ?>">Заголовок 3</a>
+            <a class="text-2" href="<?php echo esc_url(home_url('/#n1')); ?>">Заголовок 3</a>
           </li>
           <li><span>04</span>
-            <a class="text-2" href="<?php echo esc_url( home_url( '/#n1' ) ); ?>">Заголовок 4</a>
+            <a class="text-2" href="<?php echo esc_url(home_url('/#n1')); ?>">Заголовок 4</a>
           </li>
         </ul>
       </div>
@@ -175,25 +175,25 @@
     </div>
   </section>
   <?php
-  $card_id   = get_queried_object_id();
-  $deck      = get_field( 'card-relation', $card_id );
-  $deck_link = home_url( '/' );
-  if ( $deck ) {
-    $deck_id   = is_object( $deck ) ? $deck->ID : (int) $deck;
-    $deck_link = get_permalink( $deck_id );
+  $card_id = get_queried_object_id();
+  $deck = get_field('card-relation', $card_id);
+  $deck_link = home_url('/');
+  if ($deck) {
+    $deck_id = is_object($deck) ? $deck->ID : (int) $deck;
+    $deck_link = get_permalink($deck_id);
   }
-  $another_deck_id = $deck ? ( is_object( $deck ) ? $deck->ID : (int) $deck ) : 0;
-  $another_cards_query = new WP_Query( [
-    'post_type'      => 'card',
+  $another_deck_id = $deck ? (is_object($deck) ? $deck->ID : (int) $deck) : 0;
+  $another_cards_query = new WP_Query([
+    'post_type' => 'card',
     'posts_per_page' => -1,
-    'meta_query'     => $another_deck_id ? [
+    'meta_query' => $another_deck_id ? [
       'relation' => 'OR',
-      [ 'key' => 'card-relation', 'value' => (string) $another_deck_id, 'compare' => '=' ],
-      [ 'key' => 'card-relation', 'value' => '"' . $another_deck_id . '"', 'compare' => 'LIKE' ],
-    ] : [ [ 'key' => 'card-relation', 'value' => 'none', 'compare' => '=' ] ],
-    'orderby'        => 'menu_order title',
-    'order'          => 'ASC',
-  ] );
+      ['key' => 'card-relation', 'value' => (string) $another_deck_id, 'compare' => '='],
+      ['key' => 'card-relation', 'value' => '"' . $another_deck_id . '"', 'compare' => 'LIKE'],
+    ] : [['key' => 'card-relation', 'value' => 'none', 'compare' => '=']],
+    'orderby' => 'menu_order title',
+    'order' => 'ASC',
+  ]);
   ?>
   <section class="another" aria-labelledby="article-title">
     <div class="container">
@@ -202,8 +202,8 @@
         <div class="section-top__right">
           <p class="section-top__text text-2"><span class="opa-6">Погрузись в мир, где каждая карта хранит свои
               тайны</span></p>
-          <a class="btn btn-primary section-top__btn" href="<?php echo esc_url( $deck_link ); ?>"><span>Вернуться в колоду</span><span
-              class="bg"></span></a>
+          <a class="btn btn-primary section-top__btn" href="<?php echo esc_url($deck_link); ?>"><span>Вернуться в
+              колоду</span><span class="bg"></span></a>
         </div>
       </div>
       <div class="another__w">
@@ -217,55 +217,55 @@
           </thead>
           <tbody>
             <?php
-            if ( $another_cards_query->have_posts() ) :
+            if ($another_cards_query->have_posts()):
               $num = 0;
-              while ( $another_cards_query->have_posts() ) :
+              while ($another_cards_query->have_posts()):
                 $another_cards_query->the_post();
                 $c_id = get_the_ID();
-                $orig = get_field( 'card-original-name', $c_id );
-                if ( $orig === null || $orig === '' ) {
+                $orig = get_field('card-original-name', $c_id);
+                if ($orig === null || $orig === '') {
                   $orig = get_the_title();
                 }
                 $num++;
                 ?>
-            <tr>
-              <td><?php echo (int) $num; ?></td>
-              <td>
-                <a href="<?php echo esc_url( get_permalink( $c_id ) ); ?>"><?php the_title(); ?></a>
-              </td>
-              <td><?php echo esc_html( $orig ); ?></td>
-            </tr>
-            <?php
+                <tr>
+                  <td><?php echo (int) $num; ?></td>
+                  <td>
+                    <a href="<?php echo esc_url(get_permalink($c_id)); ?>"><?php the_title(); ?></a>
+                  </td>
+                  <td><?php echo esc_html($orig); ?></td>
+                </tr>
+                <?php
               endwhile;
               wp_reset_postdata();
-            else :
-              $fb_cards = get_posts( [
-                'post_type'      => 'card',
+            else:
+              $fb_cards = get_posts([
+                'post_type' => 'card',
                 'posts_per_page' => 1,
-                'post_status'    => 'publish',
-                'orderby'        => 'title',
-                'order'          => 'ASC',
-              ] );
-              $fb_url    = home_url( '/card' );
-              $fb_title  = 'Шут';
-              $fb_orig   = 'The FooL';
-              if ( ! empty( $fb_cards[0] ) ) {
+                'post_status' => 'publish',
+                'orderby' => 'title',
+                'order' => 'ASC',
+              ]);
+              $fb_url = home_url('/card');
+              $fb_title = 'Шут';
+              $fb_orig = 'The FooL';
+              if (!empty($fb_cards[0])) {
                 $fb = $fb_cards[0];
-                $fb_url   = get_permalink( $fb->ID );
-                $fb_title = get_the_title( $fb->ID );
-                $fb_orig  = get_field( 'card-original-name', $fb->ID );
-                if ( $fb_orig === null || $fb_orig === '' ) {
+                $fb_url = get_permalink($fb->ID);
+                $fb_title = get_the_title($fb->ID);
+                $fb_orig = get_field('card-original-name', $fb->ID);
+                if ($fb_orig === null || $fb_orig === '') {
                   $fb_orig = $fb_title;
                 }
               }
               ?>
-            <tr>
-              <td>0</td>
-              <td>
-                <a href="<?php echo esc_url( $fb_url ); ?>"><?php echo esc_html( $fb_title ); ?></a>
-              </td>
-              <td><?php echo esc_html( $fb_orig ); ?></td>
-            </tr>
+              <tr>
+                <td>0</td>
+                <td>
+                  <a href="<?php echo esc_url($fb_url); ?>"><?php echo esc_html($fb_title); ?></a>
+                </td>
+                <td><?php echo esc_html($fb_orig); ?></td>
+              </tr>
             <?php endif; ?>
           </tbody>
         </table>
@@ -275,11 +275,11 @@
   <section class="list-cards" aria-labelledby="list-cards-title">
     <?php
     $lovely_deck_links = [];
-    $lovely_decks = get_posts( [ 'post_type' => 'deck', 'numberposts' => -1, 'post_status' => 'publish' ] );
-    foreach ( $lovely_decks as $p ) {
-      $lovely_deck_links[ $p->post_title ] = get_permalink( $p->ID );
+    $lovely_decks = get_posts(['post_type' => 'deck', 'numberposts' => -1, 'post_status' => 'publish']);
+    foreach ($lovely_decks as $p) {
+      $lovely_deck_links[$p->post_title] = get_permalink($p->ID);
     }
-    $pack_fallback = home_url( '/pack' );
+    $pack_fallback = home_url('/pack');
     ?>
     <div class="container">
       <div class="section-top lovely-top">
@@ -301,149 +301,95 @@
           </svg>
         </div>
         <div class="list-cards__slider">
-          <div class="list-cards__swiper swiper lovely" data-list-cards>
+          <div class="list-cards__swiper swiper taro" data-list-cards>
             <div class="swiper-wrapper">
-        <div class="swiper-slide">
-        <div class="card">
-          <div class="card__img">
-            <img
-              srcset="<?php bloginfo('template_directory'); ?>/assets/images/card-origin-360x436.png 360w, <?php bloginfo('template_directory'); ?>/assets/images/card-origin-400x484.png 400w, <?php bloginfo('template_directory'); ?>/assets/images/card-origin-640x774.png 640w, <?php bloginfo('template_directory'); ?>/assets/images/card-origin-800x968.png 800w, <?php bloginfo('template_directory'); ?>/assets/images/card-origin-966x1170.png 966w"
-              src="<?php bloginfo('template_directory'); ?>/assets/images/card-origin-966x1170.png"
-              sizes="(min-width: 966px) 966px, 100vw" width="966" height="1170" alt decoding="async" loading="lazy">
-          </div>
-          <div class="card__cont">
-            <div class="card__top">
-              <h3 class="card__title">Таро уэйта</h3>
-              <p class="card__descr opa-7 text-3">Универсальная колода, которая <br>поможет вам быстро освоить основы
-                раскладов</p>
-            </div>
-            <div class="card__action">
-              <a class="btn btn card__btn" href="<?php echo esc_url( $lovely_deck_links['Таро уэйта'] ?? $pack_fallback ); ?>"><span>Подробнее</span><span class="bg"></span></a>
-              <div class="card__bottom">
-                <a class="btn btn btn-marketplace btn-marketplace-wb" href="https://www.wildberries.ru/brands/312174691-ezotouch" target="_blank" rel="noopener noreferrer"><span class="icon">
-                    <svg fill="currentColor" stroke="none">
-                      <use href="<?php bloginfo('template_directory'); ?>/assets/images/icons.svg#wb"></use>
-                    </svg>
-                  </span><span class="bg"></span></a>
-                <a class="btn btn btn-marketplace btn-marketplace-ozon" href="https://www.ozon.ru/brand/ezotouch-101849711/?abt_att=1" target="_blank" rel="noopener noreferrer"><span class="icon">
-                    <svg fill="currentColor" stroke="none">
-                      <use href="<?php bloginfo('template_directory'); ?>/assets/images/icons.svg#ozon"></use>
-                    </svg>
-                  </span><span class="bg"></span></a>
-              </div>
-            </div>
-          </div>
-        </div>
-        </div>
-        <div class="swiper-slide">
-        <div class="card">
-          <div class="card__img">
-            <img
-              srcset="<?php bloginfo('template_directory'); ?>/assets/images/card-elf-360x436.png 360w, <?php bloginfo('template_directory'); ?>/assets/images/card-elf-400x484.png 400w, <?php bloginfo('template_directory'); ?>/assets/images/card-elf-640x774.png 640w, <?php bloginfo('template_directory'); ?>/assets/images/card-elf-800x968.png 800w, <?php bloginfo('template_directory'); ?>/assets/images/card-elf-966x1170.png 966w"
-              src="<?php bloginfo('template_directory'); ?>/assets/images/card-elf-966x1170.png"
-              sizes="(min-width: 966px) 966px, 100vw" width="966" height="1170" alt decoding="async"
-              loading="lazy"><span>авторская колода</span>
-          </div>
-          <div class="card__cont">
-            <div class="card__top">
-              <h3 class="card__title">Таро Эльфов</h3>
-              <p class="card__descr opa-7 text-3">Авторская колода интуитивной практики, раскладов на отношения,
-                работу и личностное развитие</p>
-            </div>
-            <div class="card__action">
-              <a class="btn btn card__btn" href="<?php echo esc_url( $lovely_deck_links['Таро Эльфов'] ?? $pack_fallback ); ?>"><span>Подробнее</span><span class="bg"></span></a>
-              <div class="card__bottom">
-                <a class="btn btn btn-marketplace btn-marketplace-wb" href="https://www.wildberries.ru/brands/312174691-ezotouch" target="_blank" rel="noopener noreferrer"><span class="icon">
-                    <svg fill="currentColor" stroke="none">
-                      <use href="<?php bloginfo('template_directory'); ?>/assets/images/icons.svg#wb"></use>
-                    </svg>
-                  </span><span class="bg"></span></a>
-                <a class="btn btn btn-marketplace btn-marketplace-ozon" href="https://www.ozon.ru/brand/ezotouch-101849711/?abt_att=1" target="_blank" rel="noopener noreferrer"><span class="icon">
-                    <svg fill="currentColor" stroke="none">
-                      <use href="<?php bloginfo('template_directory'); ?>/assets/images/icons.svg#ozon"></use>
-                    </svg>
-                  </span><span class="bg"></span></a>
-              </div>
-            </div>
-          </div>
-        </div>
-        </div>
-        <div class="swiper-slide">
-        <div class="card">
-          <div class="card__img">
-            <img
-              srcset="<?php bloginfo('template_directory'); ?>/assets/images/card-infinity-360x436.png 360w, <?php bloginfo('template_directory'); ?>/assets/images/card-infinity-400x484.png 400w, <?php bloginfo('template_directory'); ?>/assets/images/card-infinity-640x774.png 640w, <?php bloginfo('template_directory'); ?>/assets/images/card-infinity-800x968.png 800w, <?php bloginfo('template_directory'); ?>/assets/images/card-infinity-966x1170.png 966w"
-              src="<?php bloginfo('template_directory'); ?>/assets/images/card-infinity-966x1170.png"
-              sizes="(min-width: 966px) 966px, 100vw" width="966" height="1170" alt decoding="async"
-              loading="lazy"><span>авторская колода</span>
-          </div>
-          <div class="card__cont">
-            <div class="card__top">
-              <h3 class="card__title">Вечная жизнь</h3>
-              <p class="card__descr opa-7 text-3">Авторская колода, рассчитаная на самостоятельную интерпретацию без привязки к готовым трактовкам</p>
-            </div>
-            <div class="card__action">
-              <a class="btn btn card__btn" href="<?php echo esc_url( $lovely_deck_links['Вечная жизнь'] ?? $pack_fallback ); ?>"><span>Подробнее</span><span class="bg"></span></a>
-              <div class="card__bottom">
-                <a class="btn btn btn-marketplace btn-marketplace-wb" href="https://www.wildberries.ru/brands/312174691-ezotouch" target="_blank" rel="noopener noreferrer"><span class="icon">
-                    <svg fill="currentColor" stroke="none">
-                      <use href="<?php bloginfo('template_directory'); ?>/assets/images/icons.svg#wb"></use>
-                    </svg>
-                  </span><span class="bg"></span></a>
-                <a class="btn btn btn-marketplace btn-marketplace-ozon" href="https://www.ozon.ru/brand/ezotouch-101849711/?abt_att=1" target="_blank" rel="noopener noreferrer"><span class="icon">
-                    <svg fill="currentColor" stroke="none">
-                      <use href="<?php bloginfo('template_directory'); ?>/assets/images/icons.svg#ozon"></use>
-                    </svg>
-                  </span><span class="bg"></span></a>
-              </div>
-            </div>
-          </div>
-        </div>
-        </div>
-        <div class="swiper-slide">
-        <div class="card">
-          <div class="card__img">
-            <img
-              srcset="<?php bloginfo('template_directory'); ?>/assets/images/card-shades-360x436.png 360w, <?php bloginfo('template_directory'); ?>/assets/images/card-shades-400x484.png 400w, <?php bloginfo('template_directory'); ?>/assets/images/card-shades-640x774.png 640w, <?php bloginfo('template_directory'); ?>/assets/images/card-shades-800x968.png 800w, <?php bloginfo('template_directory'); ?>/assets/images/card-shades-966x1170.png 966w"
-              src="<?php bloginfo('template_directory'); ?>/assets/images/card-shades-966x1170.png"
-              sizes="(min-width: 966px) 966px, 100vw" width="966" height="1170" alt decoding="async"
-              loading="lazy"><span>авторская колода</span>
-          </div>
-          <div class="card__cont">
-            <div class="card__top">
-              <h3 class="card__title">Таро теней</h3>
-              <p class="card__descr opa-7 text-3">Колода, исследующая скрытые <br>стороны личности и подсознательные
-                процессы</p>
-            </div>
-            <div class="card__action">
-              <a class="btn btn card__btn" href="<?php echo esc_url( $lovely_deck_links['Таро теней'] ?? $pack_fallback ); ?>"><span>Подробнее</span><span class="bg"></span></a>
-              <div class="card__bottom">
-                <a class="btn btn btn-marketplace btn-marketplace-wb" href="https://www.wildberries.ru/brands/312174691-ezotouch" target="_blank" rel="noopener noreferrer"><span class="icon">
-                    <svg fill="currentColor" stroke="none">
-                      <use href="<?php bloginfo('template_directory'); ?>/assets/images/icons.svg#wb"></use>
-                    </svg>
-                  </span><span class="bg"></span></a>
-                <a class="btn btn btn-marketplace btn-marketplace-ozon" href="https://www.ozon.ru/brand/ezotouch-101849711/?abt_att=1" target="_blank" rel="noopener noreferrer"><span class="icon">
-                    <svg fill="currentColor" stroke="none">
-                      <use href="<?php bloginfo('template_directory'); ?>/assets/images/icons.svg#ozon"></use>
-                    </svg>
-                  </span><span class="bg"></span></a>
-              </div>
-            </div>
-          </div>
-        </div>
-        </div>
+              <?php
+              $decsHits = get_field('prefer', 'option');
+
+              if ($decsHits):
+                if (is_array($decsHits)):
+                  foreach ($decsHits as $post):
+
+                    setup_postdata($post); ?>
+                    <div class="swiper-slide">
+                      <div class="card">
+                        <a href="<?php echo get_permalink(); ?>" class=" card__img">
+                          <?php
+                          $preview = get_field('deck-preview');
+                          if ($preview):
+                            ?>
+                            <img src="<?php echo esc_url($preview['url']); ?>"
+                              width="<?php echo esc_attr($preview['width']); ?>"
+                              height="<?php echo esc_attr($preview['height']); ?>"
+                              alt="<?php echo esc_attr($preview['alt'] ?? $title); ?>" decoding="async" loading="lazy">
+                          <?php else: ?>
+                            <img src="<?php bloginfo('template_directory'); ?>/assets/images/card-fallback.png" width="966"
+                              height="1170" alt="<?php echo esc_attr($title); ?>" decoding="async" loading="lazy">
+                          <?php endif; ?>
+                        </a>
+
+                        <div class="card__cont">
+                          <div class="card__top">
+                            <?php if (get_the_title()): ?>
+                              <h3 class="card__title">
+                                <a href="<?php echo get_permalink(); ?>">
+                                  <?php echo get_the_title() ?>
+                                </a>
+                              </h3>
+                            <?php endif; ?>
+                            <?php if (get_field('deck-descr')): ?>
+                              <div class=" card__descr opa-7 text-3">
+                                <?php the_field('deck-descr'); ?>
+                              </div>
+                            <?php endif; ?>
+                          </div>
+                          <div class="card__action">
+                            <a class="btn btn card__btn" href="<?php echo get_permalink(); ?>">
+                              <span>Подробнее</span><span class="bg"></span>
+                            </a>
+                            <div class="card__bottom">
+                              <a class="btn btn btn-marketplace btn-marketplace-wb"
+                                href="https://www.wildberries.ru/brands/312174691-ezotouch" target="_blank"
+                                rel="noopener noreferrer">
+                                <span class="icon">
+                                  <svg fill="currentColor" stroke="none">
+                                    <use href="<?php bloginfo('template_directory'); ?>/assets/images/icons.svg#wb"></use>
+                                  </svg>
+                                </span>
+                                <span class="bg"></span>
+                              </a>
+                              <a class="btn btn btn-marketplace btn-marketplace-ozon"
+                                href="https://www.ozon.ru/brand/ezotouch-101849711/?abt_att=1" target="_blank"
+                                rel="noopener noreferrer">
+                                <span class="icon">
+                                  <svg fill="currentColor" stroke="none">
+                                    <use href="<?php bloginfo('template_directory'); ?>/assets/images/icons.svg#ozon"></use>
+                                  </svg>
+                                </span>
+                                <span class="bg"></span>
+                              </a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  <?php endforeach;
+                  wp_reset_postdata();
+                else: ?>
+                  <p>Проверь поле "hit" в админке</p>
+                <?php endif;
+              endif; ?>
             </div>
           </div>
         </div>
       </div>
     </div>
   </section>
-	
-	  <?php include_once('layout/section/space.php'); ?>
+
+  <?php include_once('layout/section/space.php'); ?>
   <?php include_once('layout/section/world.php'); ?>
   <?php include_once('layout/section/library.php'); ?>
-	
+
 </main>
 
 <?php include_once('layout/global/footer.php'); ?>
