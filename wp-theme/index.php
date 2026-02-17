@@ -8,7 +8,7 @@ Template Name: Главная
 
 include_once('layout/global/header.php'); ?>
 
-<main class="content">
+<main class="content texture">
   <section class="offer container" aria-labelledby="offer-title">
     <div class="offer__w">
       <div class="offer__left">

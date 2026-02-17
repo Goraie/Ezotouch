@@ -16,7 +16,7 @@
 			<div class="world__line"></div>
 			<div class="world__card">
 				<div class="world__top"><span class="world__count">2</span>
-					<p class="world__text text-1"><b>Мы прислушиваемся к тем,</b> кто работает с нашими картами, и бережно
+					<p class="world__text text-1">Мы прислушиваемся к тем, кто работает с нашими картами, и бережно
 						дорабатываем каждую деталь</p>
 				</div>
 				<img
@@ -28,7 +28,7 @@
 			<div class="world__line"></div>
 			<div class="world__card">
 				<div class="world__top"><span class="world__count">3</span>
-					<p class="world__text text-1"><b>Карты сделаны так, чтобы с ними хотелось работать</b> (мягкие края и
+					<p class="world__text text-1">Карты сделаны так, чтобы с ними хотелось работать (мягкие края и
 						гладкая поверхность)</p>
 				</div>
 				<img
