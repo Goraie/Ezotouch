@@ -57,7 +57,7 @@ export default () => {
           </div>
         </div>
         <div className="footer__right">
-          <h5 className="footer__title opa-5">Связаться с нами</h5>
+          <h5 className="footer__title opa-5">Навигация</h5>
           <nav className="footer__nav">
             <ul className="footer__list">
               <li className="footer__item">
