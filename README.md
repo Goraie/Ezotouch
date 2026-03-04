@@ -1,8 +1,8 @@
-# 🧱 Friendly Frontend Starter
+# Friendly Frontend Starter
 
 Стартер для современных фронтенд-проектов на базе [Minista](https://minista.qranoko.jp/) с поддержкой JSX (без React), SCSS, линтинга и автоформатирования.
 
-## 🚀 Быстрый старт
+## Быстрый старт
 
 Создайте проект с помощью `npm create`:
 
@@ -16,7 +16,7 @@ npm create friendly-frontend@latest
 npm create friendly-frontend@latest -- --ts
 ```
 
-## 📦 Что внутри
+## Что внутри
 
 Стартер включает:
 
@@ -54,7 +54,7 @@ npm run lint          # Полная проверка кода и формати
 npm run lint:fix      # Полная проверка с автоисправлением и форматированием
 ```
 
-## ⚙️ Структура проекта
+## Структура проекта
 
 ```csharp
 ├── public/               # Статичные файлы, не обрабатываемые сборщиком
@@ -89,7 +89,7 @@ npm run lint:fix      # Полная проверка с автоисправл�
 └── stylelint.config.js    # Конфигурация Stylelint (проверка CSS/SCSS)
 ```
 
-## 🧠 Что особенно удобно
+## Что особенно удобно
 
 - JSX без React — почти как HTML, но мощнее: можно вставлять JS и выносить куски разметки в отдельные файлы
 - [Vite](https://vite.dev/) под капотом — [Minista](https://minista.qranoko.jp/) использует [Vite](https://vite.dev/) как сборщик, так что всё быстро, современно и с поддержкой HMR
@@ -104,35 +104,35 @@ npm run lint:fix      # Полная проверка с автоисправл�
     - `.visible-tablet`, `.hidden-tablet`
     - `.visible-mobile`, `.hidden-mobile`
 
-## 📚 Документация Minista
+## Документация Minista
 
 Если вы не знакомы с Minista — обязательно загляните в официальную документацию:
 
-> 🔗 https://minista.qranoko.jp/docs/
+>  https://minista.qranoko.jp/docs/
 
 Рекомендуем к прочтению:
 
-- 📄 Конфигурация Minista — `minista.config.js`
+- Конфигурация Minista — `minista.config.js`
   - https://minista.qranoko.jp/docs/config-file
-- 🧱 Глобальный layout — `src/global.jsx`
+- Глобальный layout — `src/global.jsx`
   - https://minista.qranoko.jp/docs/global
-- 🧾 Метаданные страниц — переменная `metadata` в `src/pages/**.jsx`
+- Метаданные страниц — переменная `metadata` в `src/pages/**.jsx`
   - https://minista.qranoko.jp/docs/metadata
-- 🧠 Компонент `<Head>` — для добавления `<meta>`, `<title>` и прочего
+- Компонент `<Head>` — для добавления `<meta>`, `<title>` и прочего
   - https://minista.qranoko.jp/docs/head
-- 🖼 Компонент `<Image>` — для оптимизированной загрузки изображений
+- Компонент `<Image>` — для оптимизированной загрузки изображений
   - https://minista.qranoko.jp/docs/image
-- 🧩 Компонент `<Icon>` — SVG-спрайт и иконки
+- Компонент `<Icon>` — SVG-спрайт и иконки
   - https://minista.qranoko.jp/docs/svg-sprite-icon
-    > ☝️ В нашем шаблоне поверх встроенного `<Icon>` реализован компонент-обёртка `src/components/Icon.jsx`.
+    > В нашем шаблоне поверх встроенного `<Icon>` реализован компонент-обёртка `src/components/Icon.jsx`.
     > Он автоматически прокидывает нужные атрибуты (`fill`, `stroke`) и использует `currentColor` —
     > чтобы удобно управлять цветом иконки через CSS, независимо от оригинальной реализации SVG.
 
-## 📝 Советы
+## Советы
 
 Для TypeScript-версии используйте `npm create friendly-frontend@latest -- --ts`
 
-## ❓ FAQ
+## FAQ
 
 ### Почему используется JSX без React?
 
