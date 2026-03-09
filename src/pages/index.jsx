@@ -1,7 +1,7 @@
+import TarotSelection from '@/components/TarotSelection'
 import Library from '@/sections/reused/Library'
 import Space from '@/sections/reused/Space'
 import World from '@/sections/reused/World'
-import Day from '@/sections/single/homepage/Day'
 import Mak from '@/sections/single/homepage/Mak'
 import MakCards from '@/sections/single/homepage/MakCards'
 import MakRead from '@/sections/single/homepage/MakRead'
@@ -25,7 +25,7 @@ export default () => {
       <Mak />
       <MakRead />
       <MakCards />
-      <Day />
+      <TarotSelection />
       <Popular />
       <Space />
       <World />

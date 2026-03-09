@@ -3,7 +3,7 @@ import Icon from '../Icon'
 import './Button.scss'
 
 export default (props) => {
-  const { className, type = 'button', href, name = false, children } = props
+  const { className, type = 'button', href, name = false, children, id } = props
 
   const isLink = href !== undefined
   const Component = isLink ? 'a' : 'button'
@@ -18,7 +18,7 @@ export default (props) => {
   const hasIcon = name ? true : false
 
   return (
-    <Component className={clsx('btn', className)} {...attributesByTag}>
+    <Component id={id} className={clsx('btn', className)} {...attributesByTag}>
       {children && <span>{children}</span>}
       {hasIcon && <Icon name={name} hasFill />}
       <span className="bg"></span>

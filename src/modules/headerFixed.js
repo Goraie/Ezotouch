@@ -50,12 +50,12 @@ function headerDesk(header, block) {
 
 function initHeaderFixed() {
   const header = document.querySelector('.header')
-  if (!header) return
+  if (!header) {return}
 
   if (window.outerWidth > 1024) {
     const main = document.querySelector('main')
     const block = main?.firstElementChild ?? main?.firstChild
-    if (!block) return
+    if (!block) {return}
     headerDesk(header, block)
   } else {
     window.addEventListener('scroll', () => {

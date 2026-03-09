@@ -1,0 +1,40 @@
+.day-card {
+  position: relative;
+  width: 240px;
+  height: 320px;
+  perspective: 1000px;
+
+  &__front,
+  &__back {
+    position: absolute;
+    inset: 0;
+    backface-visibility: hidden; /* прячем обратную сторону */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Передняя сторона (рубашка) */
+  &__front {
+    background: #008ccc;
+    color: #fff;
+    transform: rotateY(0deg);
+  }
+
+  /* Обратная сторона */
+  &__back {
+    background: #e7e7e7;
+    color: #000;
+    transform: rotateY(180deg);
+  }
+
+  /* Переворот всей карточки */
+  & {
+    transform-style: preserve-3d;
+    transition: transform 0.6s;
+  }
+
+  &:hover {
+    transform: rotateY(180deg);
+  }
+}

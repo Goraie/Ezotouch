@@ -6,6 +6,12 @@
 	.breadcrumbs a::after {
 		background: url('<?php bloginfo('template_directory'); ?>/assets/images/arrow-next.svg') no-repeat center / contain;
 	}
+
+	main.texture {
+		background-image: url('<?php bloginfo('template_directory'); ?>/assets/images/pattern.png');
+		background-position: left top;
+		background-repeat: repeat-y;
+	}
 </style>
 
 <body>
@@ -14,31 +20,35 @@
 			<nav class="header__menu">
 				<ul class="header__menu-list">
 					<li class="header__menu-item">
-						<a class="header__menu-link" href="<?php echo esc_url( home_url( '/deck-type/taro' ) ); ?>">ТАРО</a>
+						<a class="header__menu-link" href="<?php echo esc_url(home_url('/deck-type/taro')); ?>">ТАРО</a>
 					</li>
 					<li class="header__menu-item">
-						<a class="header__menu-link" href="<?php echo esc_url( home_url( '/deck-type/mak' ) ); ?>">МАК</a>
+						<a class="header__menu-link" href="<?php echo esc_url(home_url('/deck-type/mak')); ?>">МАК</a>
 					</li>
 					<li class="header__menu-item">
-						<a class="header__menu-link is-active" href="#library">О нас</a>
+						<a class="header__menu-link is-active" href="#space">О нас</a>
 					</li>
 					<li class="header__menu-item">
-						<a class="header__menu-link is-active" href="<?php echo esc_url( home_url( '/' ) ); ?>">Карта дня</a>
+						<a class="header__menu-link is-active" href="#day">Карта дня</a>
 					</li>
 				</ul>
 			</nav>
-			<a class="logo header__logo" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="Home" aria-label="Home">
+			<a class="logo header__logo" href="<?php echo esc_url(home_url('/')); ?>" title="Home" aria-label="Home">
 				<img class="logo__image" src="<?php bloginfo('template_directory'); ?>/images/logo.svg" alt="" width="200"
 					height="29" loading="eager">
 			</a>
 			<div class="header__action">
-				<a class="btn btn btn-marketplace white btn-marketplace-wb header__btn" href="https://www.wildberries.ru/brands/312174691-ezotouch" target="_blank" rel="noopener noreferrer"><span>Купить
+				<a class="btn btn btn-marketplace white btn-marketplace-wb header__btn"
+					href="https://www.wildberries.ru/brands/312174691-ezotouch" target="_blank"
+					rel="noopener noreferrer"><span>Купить
 						на</span><span class="icon">
 						<svg fill="currentColor" stroke="none">
 							<use href="<?php bloginfo('template_directory'); ?>/assets/images/icons.svg#wb"></use>
 						</svg>
 					</span><span class="bg"></span></a>
-				<a class="btn btn btn-marketplace white btn-marketplace-ozon header__btn" href="https://www.ozon.ru/brand/ezotouch-101849711/?abt_att=1" target="_blank" rel="noopener noreferrer"><span>Купить
+				<a class="btn btn btn-marketplace white btn-marketplace-ozon header__btn"
+					href="https://www.ozon.ru/brand/ezotouch-101849711/?abt_att=1" target="_blank"
+					rel="noopener noreferrer"><span>Купить
 						на</span><span class="icon">
 						<svg fill="currentColor" stroke="none">
 							<use href="<?php bloginfo('template_directory'); ?>/assets/images/icons.svg#ozon"></use>
@@ -74,27 +84,31 @@
 				</button>
 				<ul class="header-menu__list">
 					<li class="header-menu__item">
-						<a class="header-menu__link big-text-m" href="<?php echo esc_url( home_url( '/deck-type/taro' ) ); ?>">ТАРО</a>
+						<a class="header-menu__link big-text-m" href="<?php echo esc_url(home_url('/deck-type/taro')); ?>">ТАРО</a>
 					</li>
 					<li class="header-menu__item">
-						<a class="header-menu__link big-text-m" href="<?php echo esc_url( home_url( '/deck-type/mak' ) ); ?>">МАК</a>
+						<a class="header-menu__link big-text-m" href="<?php echo esc_url(home_url('/deck-type/mak')); ?>">МАК</a>
 					</li>
 					<li class="header-menu__item">
-						<a class="header-menu__link big-text-m is-active" href="<?php echo esc_url( home_url( '#library' ) ); ?>">О нас</a>
+						<a class="header-menu__link big-text-m is-active" href="#space">О
+							нас</a>
 					</li>
 					<li class="header-menu__item">
-						<a class="header-menu__link big-text-m is-active" href="<?php echo esc_url( home_url( '/' ) ); ?>">Карта дня</a>
+						<a class="header-menu__link big-text-m is-active" href="#day">Карта
+							дня</a>
 					</li>
 				</ul>
 				<div class="header-menu__action">
 					<a class="btn btn btn-marketplace white btn-marketplace-wb header-menu__btn header__btn"
-						href="https://www.wildberries.ru/brands/312174691-ezotouch" target="_blank" rel="noopener noreferrer"><span>Купить на</span><span class="icon">
+						href="https://www.wildberries.ru/brands/312174691-ezotouch" target="_blank"
+						rel="noopener noreferrer"><span>Купить на</span><span class="icon">
 							<svg fill="currentColor" stroke="none">
 								<use href="<?php bloginfo('template_directory'); ?>/assets/images/icons.svg#wb"></use>
 							</svg>
 						</span><span class="bg"></span></a>
 					<a class="btn btn btn-marketplace white btn-marketplace-ozon header-menu__btn header__btn"
-						href="https://www.ozon.ru/brand/ezotouch-101849711/?abt_att=1" target="_blank" rel="noopener noreferrer"><span>Купить на</span><span class="icon">
+						href="https://www.ozon.ru/brand/ezotouch-101849711/?abt_att=1" target="_blank"
+						rel="noopener noreferrer"><span>Купить на</span><span class="icon">
 							<svg fill="currentColor" stroke="none">
 								<use href="<?php bloginfo('template_directory'); ?>/assets/images/icons.svg#ozon"></use>
 							</svg>

@@ -4,7 +4,7 @@ import 'swiper/css'
 
 function initSpaceSlider() {
   const spaceList = document.querySelector('.space__list.swiper')
-  if (!spaceList) return
+  if (!spaceList) {return}
 
   const isMobile = window.innerWidth <= 1024
   let swiperInstance = spaceList.swiper

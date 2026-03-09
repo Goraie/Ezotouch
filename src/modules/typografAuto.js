@@ -20,7 +20,7 @@ function processTextNodes(node) {
 }
 
 function initTypografAuto() {
-  if (typeof document === 'undefined') return
+  if (typeof document === 'undefined') {return}
 
   const observer = new MutationObserver((mutations) => {
     mutations.forEach((mutation) => {

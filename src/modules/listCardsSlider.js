@@ -2,18 +2,18 @@ import Swiper from 'swiper'
 import 'swiper/css'
 
 function initListCardsSlider() {
-	if (typeof document === 'undefined') return
+	if (typeof document === 'undefined') {return}
 
 	const swiperEls = document.querySelectorAll('.swiper[data-list-cards]')
 
 	swiperEls.forEach((swiperEl) => {
-		if (!swiperEl || swiperEl.swiper) return
+		if (!swiperEl || swiperEl.swiper) {return}
 
 		const wrap = swiperEl.closest('.list-cards__w')
 		const prevBtn = wrap?.querySelector('.list-cards__arrow-prev')
 		const nextBtn = wrap?.querySelector('.list-cards__arrow-next')
 
-		if (!prevBtn || !nextBtn) return
+		if (!prevBtn || !nextBtn) {return}
 
 		const swiper = new Swiper(swiperEl, {
 			loop: true,

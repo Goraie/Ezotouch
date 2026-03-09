@@ -71,6 +71,10 @@ export default defineConfig({
         find: '@/',
         replacement: path.resolve('src') + '/',
       },
+      {
+        find: 'framer-motion',
+        replacement: path.resolve('src/lib/framer-motion.jsx'),
+      },
     ],
   },
 
