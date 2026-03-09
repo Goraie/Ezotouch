@@ -37,7 +37,7 @@ npm create friendly-frontend@latest -- --ts
   - Алиасы через `jsconfig.json` (`@/ → src/`)
   - Готовая структура `src/` с компонентами, секциями, утилитами и layout’ами
 
-## 🚀 Скрипты
+## Скрипты
 
 ```bash
 npm run start         # Запуск в dev-режиме
